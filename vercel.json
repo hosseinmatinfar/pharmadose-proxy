@@ -2,15 +2,10 @@
   "version": 2,
   "functions": {
     "api/realtime-mint.js": { "runtime": "nodejs20.x", "maxDuration": 10, "memory": 512 },
-    "api/realtime-sdp.js":  { "runtime": "nodejs20.x", "maxDuration": 15, "memory": 512 },
-    "api/chat.js":          { "runtime": "nodejs20.x" },
-    "api/speech.js":        { "runtime": "nodejs20.x" }
+    "api/realtime-sdp.js":  { "runtime": "nodejs20.x", "maxDuration": 15, "memory": 512 }
   },
   "routes": [
     { "src": "/api/realtime-mint", "dest": "/api/realtime-mint.js" },
-    { "src": "/api/realtime-sdp",  "dest": "/api/realtime-sdp.js"  },
-    { "src": "/api/chat",          "dest": "/api/chat.js"          },
-    { "src": "/api/speech",        "dest": "/api/speech.js"        }
- 
+    { "src": "/api/realtime-sdp",  "dest": "/api/realtime-sdp.js"  }
   ]
 }
