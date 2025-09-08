@@ -8,7 +8,6 @@ async function rawBody(req) {
     req.on('error', reject);
   });
 }
-
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'content-type, authorization');
@@ -20,7 +19,7 @@ module.exports = async (req, res) => {
   if (!auth) return res.status(401).json({ error: 'missing_ephemeral_bearer' });
 
   const model = (req.query && req.query.model) || process.env.REALTIME_MODEL || 'gpt-realtime';
-  const offerSDP = await rawBody(req); // متن خام
+  const offerSDP = await rawBody(req); // بدنهٔ خام
 
   try {
     const r = await fetch(`https://api.openai.com/v1/realtime?model=${encodeURIComponent(model)}`, {
@@ -29,7 +28,7 @@ module.exports = async (req, res) => {
       body: offerSDP
     });
     const answer = await r.text();
-    res.status(r.status).setHeader('Content-Type', 'application/sdp').send(answer);
+    res.status(r.status).setHeader('Content-Type','application/sdp').send(answer);
   } catch (e) {
     res.status(500).json({ error: 'sdp_proxy_failed', detail: String(e) });
   }
