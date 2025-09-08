@@ -1,4 +1,3 @@
-// Vercel Serverless Function: /api/realtime-mint
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -20,16 +19,14 @@ export default async function handler(req, res) {
     });
 
     const data = await r.json();
-    if (!r.ok) {
-      return res.status(r.status).json(data);
-    }
+    if (!r.ok) return res.status(r.status).json(data);
 
-    return res.status(200).json({
+    res.status(200).json({
       value: data?.client_secret?.value,
       expires_at: data?.client_secret?.expires_at,
       session: data,
     });
   } catch (e) {
-    return res.status(500).json({ error: 'mint_failed', detail: String(e) });
+    res.status(500).json({ error: 'mint_failed', detail: String(e) });
   }
 }
