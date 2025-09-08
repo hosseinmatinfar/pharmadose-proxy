@@ -1,11 +1,13 @@
 {
   "version": 2,
   "functions": {
+    "api/ping.js":          { "runtime": "nodejs20.x" },
     "api/realtime-mint.js": { "runtime": "nodejs20.x", "maxDuration": 10, "memory": 512 },
     "api/realtime-sdp.js":  { "runtime": "nodejs20.x", "maxDuration": 15, "memory": 512 }
   },
   "routes": [
-    { "src": "/api/realtime-mint", "dest": "/api/realtime-mint.js" },
-    { "src": "/api/realtime-sdp",  "dest": "/api/realtime-sdp.js"  }
+    { "src": "/api/ping",           "dest": "/api/ping.js" },
+    { "src": "/api/realtime-mint",  "dest": "/api/realtime-mint.js" },
+    { "src": "/api/realtime-sdp",   "dest": "/api/realtime-sdp.js" }
   ]
 }
