@@ -16,11 +16,8 @@ module.exports = async (req, res) => {
       body: JSON.stringify({
         session: {
           type: 'realtime',
-          model: process.env.REALTIME_MODEL || 'gpt-realtime',
-          // ⛔️ voice را اینجا نفرست
-          turn_detection: { type: 'server' },
-          instructions: process.env.MIA_PROMPT || undefined
-          // اگر خواستی: modalities: ["audio","text"]
+          model: process.env.REALTIME_MODEL || 'gpt-realtime'
+          // ⛔️ voice/turn_detection/instructions را اینجا نفرست
         }
       })
     });
