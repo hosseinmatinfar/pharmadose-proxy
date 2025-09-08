@@ -1,3 +1,4 @@
+// api/realtime-mint.js
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'content-type, authorization');
@@ -16,9 +17,10 @@ module.exports = async (req, res) => {
         session: {
           type: 'realtime',
           model: process.env.REALTIME_MODEL || 'gpt-realtime',
-          voice: process.env.REALTIME_VOICE || 'marin',
+          // ⛔️ voice را اینجا نفرست
           turn_detection: { type: 'server' },
           instructions: process.env.MIA_PROMPT || undefined
+          // اگر خواستی: modalities: ["audio","text"]
         }
       })
     });
