@@ -6,8 +6,8 @@
     "api/realtime-sdp.js":  { "runtime": "nodejs20.x", "maxDuration": 15, "memory": 512 }
   },
   "routes": [
-    { "src": "/api/ping",           "dest": "/api/ping.js" },
-    { "src": "/api/realtime-mint",  "dest": "/api/realtime-mint.js" },
-    { "src": "/api/realtime-sdp",   "dest": "/api/realtime-sdp.js" }
+    { "src": "/api/ping",          "dest": "/api/ping.js" },
+    { "src": "/api/realtime-mint", "dest": "/api/realtime-mint.js" },
+    { "src": "/api/realtime-sdp",  "dest": "/api/realtime-sdp.js" }
   ]
 }
