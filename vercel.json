@@ -11,6 +11,6 @@
     { "src": "/api/realtime-sdp",  "dest": "/api/realtime-sdp.js"  },
     { "src": "/api/chat",          "dest": "/api/chat.js"          },
     { "src": "/api/speech",        "dest": "/api/speech.js"        }
-    // ⚠️ اگر server.js هم نگه‌می‌داری، catch-all رو حذف کن
+ 
   ]
 }
