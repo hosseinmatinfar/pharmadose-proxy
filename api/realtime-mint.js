@@ -1,7 +1,5 @@
-import fetch from 'node-fetch';
-export const config = { runtime: 'nodejs20.x' };
-
-export default async function handler(req, res) {
+// api/realtime-mint.js  (CommonJS - بدون import)
+module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'content-type, authorization');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -30,4 +28,4 @@ export default async function handler(req, res) {
   } catch (e) {
     res.status(500).json({ error: 'mint_failed', detail: String(e) });
   }
-}
+};
