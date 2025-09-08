@@ -1,9 +1,4 @@
-
-// api/speech.js  (TTS → باینری mp3)
-import fetch from 'node-fetch';
-export const config = { runtime: 'nodejs20.x' };
-
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'content-type');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -21,9 +16,8 @@ export default async function handler(req, res) {
     });
     res.status(r.status);
     res.setHeader('Content-Type', r.headers.get('content-type') || 'audio/mpeg');
-    // استریم باینری به خروجی (بدون بافر کردن)
-    (r.body).pipe(res);
+    (r.body).pipe(res); // استریم مستقیم
   } catch (e) {
     res.status(500).json({ error: 'speech_failed', detail: String(e) });
   }
-}
+};
