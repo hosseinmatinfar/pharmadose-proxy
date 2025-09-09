@@ -14,9 +14,18 @@ module.exports = async (req, res) => {
       },
       body: JSON.stringify(req.body || {})
     });
-    res.status(r.status);
-    res.setHeader('Content-Type', r.headers.get('content-type') || 'audio/mpeg');
-    (r.body).pipe(res); // استریم مستقیم
+    
+    if (!r.ok) {
+      return res.status(r.status).json({ error: 'speech_api_error', detail: await r.text() });
+    }
+    
+    // Set correct headers for audio response
+    res.setHeader('Content-Type', 'audio/mpeg');
+    
+    // Stream the audio response
+    const buffer = await r.arrayBuffer();
+    res.status(200).send(Buffer.from(buffer));
+    
   } catch (e) {
     res.status(500).json({ error: 'speech_failed', detail: String(e) });
   }
